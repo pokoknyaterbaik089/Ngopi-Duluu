@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id" class="page-transition page-enter">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="NgopiDuluu - Coffee Shop Modern, Minimalis & Premium. Ngopi Dulu, Baru Lanjut Cerita. Nikmati sajian kopi pilihan, dessert lezat, dan suasana cozy.">
+  <meta name="keywords" content="NgopiDuluu, Coffee Shop Modern, Kopi Indonesia, Espresso, Latte, Pastry, Cafe Minimalis">
+  <meta name="author" content="NgopiDuluu Coffee">
+  <title>NgopiDuluu — Ngopi Dulu, Baru Lanjut Cerita.</title>
+
+  <!-- CSS Modules -->
+  <link rel="stylesheet" href="css/style.css?v=cart-animation-20260812-2">
+  <link rel="stylesheet" href="css/home.css?v=stats-20260812">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Apply saved theme before first paint to avoid flash -->
+  <script>
+    (function () {
+      var t = 'light';
+      try { t = localStorage.getItem('ngopiduluu_theme') || 'light'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">Ngopi<span>Duluu</span></div>
+      <div class="loading-tagline">"Brewing Happiness..."</div>
+      <div class="spinner-cup">
+        <svg viewBox="0 0 50 50">
+          <path d="M10,15 L40,15 L35,40 L15,40 Z" />
+          <path d="M40,20 C45,20 45,30 40,30" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        Ngopi<span>Duluu</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Dark Mode Toggle -->
+        <button class="icon-btn theme-toggle-btn" data-theme-toggle title="Ganti Tema">
+          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <!-- Search Button -->
+        <button class="icon-btn" id="search-nav-btn" title="Cari Menu">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+
+        <!-- Shopping Cart Icon -->
+
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div style="margin-top:auto; display:flex; gap:1rem;">
+      <button class="icon-btn" id="search-nav-btn-mobile" title="Cari Menu">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content" data-aos="fade-right">
+          <h1 class="hero-title-main">NGOPIDULUU<span>.</span></h1>
+          <h2 class="hero-subtitle"><span id="typing-element" class="typing-text"></span></h2>
+          <p class="hero-description">
+            Kopi terbaik untuk menemani harimu. Dipetik langsung dari petani lokal terbaik, diseduh presisi oleh barista berpengalaman untuk menciptakan momen sempurna di setiap tegukan.
+          </p>
+          <div class="hero-buttons">
+            <a href="menu.html" class="btn btn-primary">
+              ☕ Lihat Menu
+            </a>
+            <a href="#reservation" class="btn btn-gold">
+              ✨ Pesan Sekarang
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper" data-aos="fade-left">
+          <div class="hero-image-backdrop"></div>
+          <img src="https://i.pinimg.com/1200x/aa/20/eb/aa20eb239ac04a764be497958cb9ce62.jpg" alt="Cangkir Kopi Modern NgopiDuluu" class="hero-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Counter -->
+  <section class="stats-section" id="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item" data-aos="fade-up">
+          <span class="stat-number" data-target="250" data-suffix="+">0</span>
+          <span class="stat-label">Menu Terjual Hari Ini</span>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+          <span class="stat-number" data-target="4.9" data-prefix="★ ">4.9</span>
+          <span class="stat-label">Rating Kepuasan</span>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+          <span class="stat-number" data-target="15" data-suffix="+">0</span>
+          <span class="stat-label">Cabang di Indonesia</span>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+          <span class="stat-number" data-target="10" data-suffix="K+">0</span>
+          <span class="stat-label">Happy Customers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-container" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Interior Coffee Shop Modern" class="about-img-main">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Barista NgopiDuluu" class="about-img-secondary">
+        </div>
+        <div class="about-content" data-aos="fade-left">
+          <div class="section-subtitle">Cerita Kami</div>
+          <h2 class="section-title">Tempat Terbaik Menikmati Kopi & Berbagi Cerita</h2>
+          <p class="about-content-text">
+            Berdiri sejak tahun 2021, <strong>NgopiDuluu</strong> hadir dengan filosofi sederhana: bahwa setiap cerita hebat selalu dimulai dari cangkir kopi yang berkualitas. 
+          </p>
+          <p class="about-content-text">
+            Kami memadukan biji kopi Nusantara pilihan, sangrai artisan presisi, dan suasana coffee shop yang modern, minimalis, dan hangat. Apapun tujuanmu—bekerja, santai, atau bertemu kawan lama—kami siap menyambutmu.
+          </p>
+          <div class="about-features">
+            <div class="about-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>100% Biji Kopi Nusantara</span>
+            </div>
+            <div class="about-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Barista Sertifikasi Industri</span>
+            </div>
+            <div class="about-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Ruang Co-Working Wi-Fi Cepat</span>
+            </div>
+            <div class="about-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Bebas Pengawet & Fresh</span>
+            </div>
+          </div>
+          <div style="margin-top:2rem;">
+            <a href="about.html" class="btn btn-outline">Pelajari Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section" style="background-color: var(--bg-tertiary);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Keunggulan Kami</div>
+        <h2 class="section-title">Mengapa Memilih NgopiDuluu?</h2>
+        <p class="section-description">Pengalaman minum kopi yang tak tertandingi dengan standar kualitas tinggi.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-icon">☕</div>
+          <h3 class="why-title">Premium Beans</h3>
+          <p class="why-desc">Seleksi biji kopi specialty grade dari petani lokal pilihan dengan keunikan citarasa autentik.</p>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-icon">🌱</div>
+          <h3 class="why-title">Fresh Ingredients</h3>
+          <p class="why-desc">Menggunakan bahan-bahan organik segar, susu murni pasteurisasi, tanpa pemanis buatan.</p>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-icon">⚡</div>
+          <h3 class="why-title">Fast Service</h3>
+          <p class="why-desc">Pelayanan cepat & ramah oleh tim barista profesional untuk menjaga hari produktifmu.</p>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="why-icon">❤️</div>
+          <h3 class="why-title">Cozy Place</h3>
+          <p class="why-desc">Desain tempat estetis, nyaman, dilengkapi colokan di setiap meja & playlist lagu pilihan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Signature Collection -->
+  <section class="section" id="signature-collection">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Signature Collection</div>
+        <h2 class="section-title">Menu Andalan NgopiDuluu</h2>
+        <p class="section-description">Cicipi pilihan menu terbaik yang menjadi favorit pelanggan setia kami.</p>
+      </div>
+
+      <div class="why-grid" data-aos="fade-up">
+        <div class="menu-card">
+          <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="NgopiDulu Signature"></div>
+          <div class="menu-content">
+            <div class="menu-header-row"><h3 class="menu-title">⭐ NgopiDulu Signature</h3><div class="menu-rating">★ 5.0</div></div>
+            <p class="menu-desc">Resep kopi rahasia khas barista kami dengan krim rahasia manis gurih.</p>
+            <div class="menu-footer-row"><span class="menu-price">Rp 36.000</span></div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Caramel Cloud"></div>
+          <div class="menu-content">
+            <div class="menu-header-row"><h3 class="menu-title">🔥 Caramel Cloud</h3><div class="menu-rating">★ 4.9</div></div>
+            <p class="menu-desc">Espresso dingin dilapisi foam karamel melayang seperti awan lembut.</p>
+            <div class="menu-footer-row"><span class="menu-price">Rp 38.000</span></div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Midnight Brew"></div>
+          <div class="menu-content">
+            <div class="menu-header-row"><h3 class="menu-title">☕ Midnight Brew</h3><div class="menu-rating">★ 4.8</div></div>
+            <p class="menu-desc">Cold brew pekat berpadu rasa rempah kayu manis dan orange zest.</p>
+            <div class="menu-footer-row"><span class="menu-price">Rp 37.000</span></div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Matcha Latte"></div>
+          <div class="menu-content">
+            <div class="menu-header-row"><h3 class="menu-title">🍵 Matcha Latte</h3><div class="menu-rating">★ 4.9</div></div>
+            <p class="menu-desc">Uji Matcha asal Jepang berkombinasi dengan susu hangat gurih.</p>
+            <div class="menu-footer-row"><span class="menu-price">Rp 33.000</span></div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Cheesecake"></div>
+          <div class="menu-content">
+            <div class="menu-header-row"><h3 class="menu-title">🍰 Cheesecake</h3><div class="menu-rating">★ 4.9</div></div>
+            <p class="menu-desc">Kue keju panggang gaya New York yang lembut dan lumer di mulut.</p>
+            <div class="menu-footer-row"><span class="menu-price">Rp 38.000</span></div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Butter Croissant"></div>
+          <div class="menu-content">
+            <div class="menu-header-row"><h3 class="menu-title">🥐 Butter Croissant</h3><div class="menu-rating">★ 4.9</div></div>
+            <p class="menu-desc">Croissant mentega kualitas tinggi yang sangat renyah dan wangi.</p>
+            <div class="menu-footer-row"><span class="menu-price">Rp 28.000</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:3.5rem;">
+        <a href="menu.html" class="btn btn-primary">☕ Explore Full Menu →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Today's Special -->
+  <div class="container">
+    <section class="special-section" data-aos="zoom-in">
+      <div class="special-grid">
+        <div class="special-content">
+          <h3>🔥 Promo Hari Ini</h3>
+          <h2>Hazelnut Latte</h2>
+          <p>Kopi susu dingin dengan sentuhan rasa kacang hazelnut yang harum dan nikmat. Rasakan paduan sempurna antara espresso, susu creamy, dan sirup hazelnut premium.</p>
+          <div class="special-price">
+            <span class="price-current">Rp 26.400</span>
+            <span class="price-old">Rp 33.000</span>
+            <span class="badge badge-promo">Diskon 20%</span>
+          </div>
+          <div class="countdown-grid" style="margin-bottom:1.5rem; justify-content:flex-start;">
+            <div class="timer-box"><span class="timer-val" id="timer-days">00</span><span class="timer-lbl">Hari</span></div>
+            <div class="timer-box"><span class="timer-val" id="timer-hours">00</span><span class="timer-lbl">Jam</span></div>
+            <div class="timer-box"><span class="timer-val" id="timer-minutes">00</span><span class="timer-lbl">Menit</span></div>
+            <div class="timer-box"><span class="timer-val" id="timer-seconds">00</span><span class="timer-lbl">Detik</span></div>
+          </div>
+          <a class="btn btn-gold" href="menu.html">Lihat Menu</a>
+        </div>
+        <div style="text-align:center;">
+          <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80" alt="Hazelnut Latte Promo" class="special-img">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 6. How We Brew -->
+  <section class="section" id="how-we-brew">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Proses Kami</div>
+        <h2 class="section-title">How We Brew</h2>
+        <p class="section-description">Setiap cangkir melalui perjalanan panjang penuh dedikasi.</p>
+      </div>
+
+      <div class="why-grid" data-aos="fade-up">
+        <div class="why-card">
+          <div class="why-icon">🌱</div>
+          <h3 class="why-title">Select Beans</h3>
+          <p class="why-desc">Memilih biji kopi terbaik dari petani lokal pilihan di seluruh Nusantara.</p>
+        </div>
+        <div class="why-card" data-aos-delay="100">
+          <div class="why-icon">🔥</div>
+          <h3 class="why-title">Roast Carefully</h3>
+          <p class="why-desc">Dipanggang dengan sempurna oleh roaster berpengalaman untuk profil rasa optimal.</p>
+        </div>
+        <div class="why-card" data-aos-delay="200">
+          <div class="why-icon">☕</div>
+          <h3 class="why-title">Brew Fresh</h3>
+          <p class="why-desc">Diseduh saat dipesan menggunakan peralatan presisi standar industri specialty.</p>
+        </div>
+        <div class="why-card" data-aos-delay="300">
+          <div class="why-icon">😊</div>
+          <h3 class="why-title">Serve with Care</h3>
+          <p class="why-desc">Disajikan dengan penuh perhatian dan cinta oleh barista profesional kami.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Coffee Experience -->
+  <section class="section" style="background-color: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Fasilitas Kami</div>
+        <h2 class="section-title">Coffee Experience</h2>
+        <p class="section-description">Lebih dari sekadar kedai kopi, NgopiDuluu adalah ruang produktif dan nyaman.</p>
+      </div>
+
+      <div class="why-grid" data-aos="fade-up">
+        <div class="why-card">
+          <div class="why-icon">📶</div>
+          <h3 class="why-title">Free WiFi</h3>
+          <p class="why-desc">Internet berkecepatan tinggi hingga 100 Mbps untuk kerja dan browsing tanpa batas.</p>
+        </div>
+        <div class="why-card" data-aos-delay="100">
+          <div class="why-icon">🔌</div>
+          <h3 class="why-title">Charging Station</h3>
+          <p class="why-desc">Stopkontak dan port USB di setiap meja agar perangkatmu selalu terisi daya.</p>
+        </div>
+        <div class="why-card" data-aos-delay="200">
+          <div class="why-icon">🛋️</div>
+          <h3 class="why-title">Cozy Workspace</h3>
+          <p class="why-desc">Desain interior modern dan ergonomis cocok untuk bekerja atau meeting santai.</p>
+        </div>
+        <div class="why-card" data-aos-delay="300">
+          <div class="why-icon">🎵</div>
+          <h3 class="why-title">Relaxing Music</h3>
+          <p class="why-desc">Playlist lagu pilihan yang menenangkan untuk menemani waktu berkualitasmu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Gallery Preview -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Galeri Foto</div>
+        <h2 class="section-title">Momen Hangat di NgopiDuluu</h2>
+      </div>
+
+      <div id="gallery-grid-container" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1.5rem;"></div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="gallery.html" class="btn btn-outline">📸 View Gallery →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Customer Reviews & Form Testimoni -->
+  <section class="section" id="testimonials" style="background-color: var(--bg-tertiary);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Testimoni</div>
+        <h2 class="section-title">Kata Mereka Tentang Kami</h2>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div id="testimonials-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
+        <div class="why-card" data-aos="fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p style="font-style:italic; color:var(--text-muted); margin-bottom:1.2rem;">"Tempat paling favorit buat nugas & nongkrong! Kopi Iced Spanish Latte-nya beneran nagih, tempatnya super cozy dan bersih!"</p>
+          <h4 style="font-family:var(--font-body); font-weight:700;">Andini Putri</h4>
+          <span style="font-size:0.8rem; color:var(--text-light);">Content Creator</span>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-stars">★★★★★</div>
+          <p style="font-style:italic; color:var(--text-muted); margin-bottom:1.2rem;">"Pelayanan ramah banget, croissant hangatnya pas berpadu sama Cappuccino panas. Playlist lagu cafe-nya juga enak banget!"</p>
+          <h4 style="font-family:var(--font-body); font-weight:700;">Bima Raga</h4>
+          <span style="font-size:0.8rem; color:var(--text-light);">Software Engineer</span>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-stars">★★★★★</div>
+          <p style="font-style:italic; color:var(--text-muted); margin-bottom:1.2rem;">"NgopiDuluu Signature adalah es kopi terbaik yang pernah saya coba. Racikan krim manis dan kopinya bener-bener seimbang."</p>
+          <h4 style="font-family:var(--font-body); font-weight:700;">Clara Vania</h4>
+          <span style="font-size:0.8rem; color:var(--text-light);">Architect</span>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-stars">★★★★★</div>
+          <p style="font-style:italic; color:var(--text-muted); margin-bottom:1.2rem;">"Kopinya enak dan tempatnya nyaman. WiFi kencang banget, cocok banget buat kerja remote. Latte favoritku selalu Hazelnut!"</p>
+          <h4 style="font-family:var(--font-body); font-weight:700;">Dimas Prasetyo</h4>
+          <span style="font-size:0.8rem; color:var(--text-light);">Freelancer</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="section" id="team">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Tim Profesional</div>
+        <h2 class="section-title">Dibalik Kenikmatan NgopiDuluu</h2>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+          <div class="team-img-wrapper">
+            <img src="https://i.pinimg.com/736x/9c/5e/76/9c5e763e32a2cd7060a9e8aefb8cb5d9.jpg" alt="Head Barista" class="team-img">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Rian Ardiansyah</h3>
+            <div class="team-role">Head Barista</div>
+            <p class="team-desc">Juara Barista Championship 2023 dengan pengalaman 8+ tahun di industri kopi artisan.</p>
+          </div>
+        </div>
+
+        <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="team-img-wrapper">
+            <img src="https://i.pinimg.com/736x/6a/5c/aa/6a5caa493554111059b545ab3fe9df52.jpg" alt="Coffee Specialist" class="team-img">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Alexander Pranata</h3>
+            <div class="team-role">Coffee Specialist & Roaster</div>
+            <p class="team-desc">Ahli roasting biji kopi Nusantara dengan fokus pada profil sangrai specialty & organic.</p>
+          </div>
+        </div>
+
+        <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="team-img-wrapper">
+            <img src="https://i.pinimg.com/1200x/98/0f/8e/980f8edaae405546073f9a735058a7df.jpg" alt="Store Manager" class="team-img">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Devan Mahardika</h3>
+            <div class="team-role">Store Manager</div>
+            <p class="team-desc">Memastikan kenyamanan suasana cafe & standar pelayanan prima untuk setiap pengunjung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Countdown Timer -->
+  <div class="container">
+    <section class="promo-timer-card" data-aos="zoom-in">
+      <div class="section-subtitle" style="color:var(--gold);">Penawaran Terbatas</div>
+      <h2 style="font-size:2.2rem; color:#FFFFFF; margin-bottom:0.5rem;">Diskon 25% Semua Pastry & Dessert!</h2>
+      <p style="color:var(--cream); max-width:550px; margin:0 auto 1.5rem auto;">Dapatkan potongan khusus untuk pembelian menu pastry pilihan setiap pemesanan melalui reservasi online.</p>
+
+      <div class="countdown-grid">
+        <div class="timer-box"><span class="timer-val" id="timer-days">00</span><span class="timer-lbl">Hari</span></div>
+        <div class="timer-box"><span class="timer-val" id="timer-hours">00</span><span class="timer-lbl">Jam</span></div>
+        <div class="timer-box"><span class="timer-val" id="timer-minutes">00</span><span class="timer-lbl">Menit</span></div>
+        <div class="timer-box"><span class="timer-val" id="timer-seconds">00</span><span class="timer-lbl">Detik</span></div>
+      </div>
+
+      <a href="#reservation" class="btn btn-gold">Klaim Promo Sekarang</a>
+    </section>
+  </div>
+
+  <!-- FAQ Accordion Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Tanya Jawab</div>
+        <h2 class="section-title">Pertanyaan Sering Diajukan (FAQ)</h2>
+      </div>
+
+      <div class="faq-accordion" data-aos="fade-up">
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Apakah NgopiDuluu menyediakan opsi susu non-dairy / vegan?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-body">
+            Ya! Kami menyediakan pilihan Oat Milk dan Almond Milk untuk seluruh varian menu kopi dan non-kopi kami.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Apakah ada fasilitas Wi-Fi & colokan listrik untuk bekerja?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-body">
+            Tentu saja. Semua cabang NgopiDuluu dilengkapi dengan Wi-Fi berkecepatan tinggi hingga 100 Mbps serta stopkontak di setiap meja.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Bagaimana cara melakukan reservasi meja di NgopiDuluu?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-body">
+            Anda dapat mengisi formulir reservasi online di bawah ini atau menghubungi kami langsung melalui tombol WhatsApp.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <span>Berapa jam operasional kedai NgopiDuluu?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-body">
+            Kami buka setiap hari Senin – Minggu pukul 07.00 WIB hingga 23.00 WIB.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section class="section" id="reservation" style="background-color: var(--bg-tertiary);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Reservasi Online</div>
+        <h2 class="section-title">Pesan Meja Favoritmu</h2>
+        <p class="section-description">Jamin ketersediaan meja untuk pertemuan bisnis, nugas, atau kumpul bersama teman.</p>
+      </div>
+
+      <div class="reservation-card" data-aos="fade-up">
+        <form id="reservation-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="res-name">Nama Lengkap</label>
+              <input type="text" id="res-name" class="form-input" placeholder="Masukkan nama Anda" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="res-email">Email / Nomor WhatsApp</label>
+              <input type="text" id="res-email" class="form-input" placeholder="contoh@gmail.com / 08123456789" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="res-date">Tanggal Reservasi</label>
+              <input type="date" id="res-date" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="res-time">Jam Kedatangan</label>
+              <input type="time" id="res-time" class="form-input" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="res-guests">Jumlah Orang</label>
+              <select id="res-guests" class="form-input" required>
+                <option value="1">1 Orang</option>
+                <option value="2">2 Orang</option>
+                <option value="3-4">3 - 4 Orang</option>
+                <option value="5+">5+ Orang (Grup / Event)</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width" style="margin-top:1rem;">
+              <button type="submit" class="btn btn-primary" style="width:100%;">
+                📅 Konfirmasi Reservasi Sekarang
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Location Map -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-subtitle">Hubungi Kami</div>
+        <h2 class="section-title">Lokasi & Kontak NgopiDuluu</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1.2fr; gap:2.5rem;" data-aos="fade-up">
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+          <div class="why-card" style="text-align:left; padding:1.5rem; display:flex; gap:1.2rem; align-items:center;">
+            <div style="font-size:2rem; color:var(--gold);">📱</div>
+            <div>
+              <h4 style="font-family:var(--font-body); font-weight:700;">WhatsApp</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">+62 877-6407-5285</p>
+            </div>
+          </div>
+
+          <div class="why-card" style="text-align:left; padding:1.5rem; display:flex; gap:1.2rem; align-items:center;">
+            <div style="font-size:2rem; color:var(--gold);">📸</div>
+            <div>
+              <h4 style="font-family:var(--font-body); font-weight:700;">Instagram</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">@ngopiduluu.official</p>
+            </div>
+          </div>
+
+          <div class="why-card" style="text-align:left; padding:1.5rem; display:flex; gap:1.2rem; align-items:center;">
+            <div style="font-size:2rem; color:var(--gold);">✉️</div>
+            <div>
+              <h4 style="font-family:var(--font-body); font-weight:700;">Email Suara Konsumen</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">hello@ngopiduluu.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Maps Embed -->
+        <div style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md); min-height:300px;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.194741399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67323865c92!2sGrand%20Indonesia!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <div class="container">
+    <section class="newsletter-box" data-aos="zoom-in">
+      <div class="section-subtitle">Buletin NgopiDuluu</div>
+      <h2 style="font-size:2rem; margin-bottom:0.5rem;">Dapatkan Voucher Diskon 15%</h2>
+      <p style="color:var(--text-muted);">Berlangganan newsletter kami untuk info menu baru & penawaran eksklusif.</p>
+      
+      <form id="newsletter-form" class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Masukkan alamat email kamu..." required>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            Ngopi<span>Duluu</span>
+          </a>
+          <p class="footer-desc">
+            "Ngopi Dulu, Baru Lanjut Cerita."<br>
+            Kedai kopi modern pilihan utama penyuka cita rasa kopi autentik, tempat nyaman, dan pelayanan hangat.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-icon" title="Instagram">IG</a>
+            <a href="#" class="social-icon" title="TikTok">TT</a>
+            <a href="#" class="social-icon" title="Twitter/X">X</a>
+            <a href="#" class="social-icon" title="Facebook">FB</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Tautan Cepat</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">Tentang Kami</a>
+            <a href="menu.html">Daftar Menu</a>
+            <a href="gallery.html">Galeri Foto</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Kontak</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Jam Operasional</h4>
+          <div class="footer-hours">
+            <p>Senin – Jumat <span>07:00 – 23:00</span></p>
+            <p>Sabtu – Minggu <span>07:00 – 24:00</span></p>
+            <p>Hari Libur <span>Tetap Buka</span></p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Lokasi Utama</h4>
+          <p style="color:#A09890; font-size:0.9rem; line-height:1.7;">
+            Jl. Kopi Nusantara No. 88, Jakarta Selatan, DKI Jakarta 12190<br>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NgopiDuluu Coffee Shop. All Rights Reserved.</p>
+        <p>Designed with ❤️ for Coffee Lovers</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <div class="modal" id="search-modal">
+    <div class="modal-content">
+      <div class="modal-close" onclick="document.getElementById('search-modal').classList.remove('active'); document.body.style.overflow='';">✕</div>
+      <h3 style="margin-bottom:1rem; font-family:var(--font-heading);">Pencarian Live Menu</h3>
+      <div class="search-box-wrapper" style="max-width:100%; margin-bottom:1.5rem;">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="modal-search-input" class="search-input" placeholder="Cari nama menu...">
+      </div>
+      <div id="modal-search-results"></div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" title="Kembali ke Atas">↑</button>
+
+  <!-- JS Modules -->
+  <script src="js/localstorage.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/countdown.js"></script>
+
+</body>
+</html>
